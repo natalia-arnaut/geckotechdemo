@@ -1,0 +1,28 @@
+#version: '3.4'
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - ${WEB_PORT}:8080
+    restart: on-failure
+    volumes:
+      - ./config/:/config
+    depends_on:
+      - dbg
+
+  dbg:
+    image: mysql:9.2.0
+    environment:
+      MYSQL_ROOT_PASSWORD: local
+      MYSQL_PASSWORD: ${JDBC_PASSWORD}
+      MYSQL_USER: ${JDBC_USERNAME}
+      MYSQL_DATABASE: ${JDBC_DATABASE}
+    ports:
+      - ${DB_PORT}:3306
+    volumes:
+      - ./dbg-volume:/var/lib/mysql
+
+volumes:
+  db-volume:

@@ -1,0 +1,7 @@
+server.port=8081
+
+#access from outer world
+#app.datasource.recipe.jdbcUrl=jdbc:mysql://172.19.0.1:3308/gecko_recipe?connectionTimeZone=UTC&forceConnectionTimeZoneToSession=true
+app.datasource.recipe.jdbcUrl=jdbc:mysql://dbg:3306/gecko_recipe?connectionTimeZone=UTC&forceConnectionTimeZoneToSession=true
+app.datasource.recipe.username=username
+app.datasource.recipe.password=password
